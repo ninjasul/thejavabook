@@ -3,33 +3,33 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LambdaEx4 {
-	
+
 	public static void main(String[] args) {
 		ArrayList<Integer> list = new ArrayList<>();
 		for( int i = 0; i < 10; ++i ) {
 			list.add(i);
 		}
-		
-		// list ÀÇ ¸ðµç ¿ä¼Ò¸¦ Ãâ·Â
+
+		// list ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Ò¸ï¿½ ï¿½ï¿½ï¿½
 		list.forEach( i -> System.out.print(i + ","));
 		System.out.println();
-		
-		// ¸®½ºÆ®¿¡¼­ 2, 3ÀÇ ¹è¼ö¸¦ Á¦°ÅÇÑ´Ù.
+
+		// ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ 2, 3ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		list.removeIf(x -> x%2 == 0 || x%3 == 0);
 		System.out.println(list);
-		
-		// ¸®½ºÆ®ÀÇ °¢ ¿ä¼Ò¿¡ 10À» °öÇÑ´Ù.
+
+		// ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Ò¿ï¿½ 10ï¿½ï¿½ ï¿½ï¿½ï¿½Ñ´ï¿½.
 		list.replaceAll( i -> i * 10 );
 		System.out.println(list);
-		
+
 		Map<String, String> map = new HashMap<>();
 		map.put("1",  "1");
 		map.put("2",  "2");
 		map.put("3",  "3");
 		map.put("4",  "4");
-		
+
 		map.forEach((k, v) -> System.out.println("{" + k + "," + v + "},"));
 		System.out.println();
-		
+
 	}
 }

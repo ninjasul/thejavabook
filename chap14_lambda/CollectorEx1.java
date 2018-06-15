@@ -12,39 +12,39 @@ public class CollectorEx1 {
 	public static void main(String[] args) {
 		String[] strArr = { "aaa", "bbb", "ccc" };
 		Stream<String> strStream = Stream.of(strArr);
-		
+
 		String result = strStream.collect(new ConcatCollector());
-		
+
 		System.out.println(Arrays.toString(strArr));
 		System.out.println("result="+result);
 	}
 }
 
-// T(¿ä¼Ò)¸¦ A¿¡ ´©ÀûÇÑ ´ÙÀ½, °á°ú¸¦ R·Î º¯È¯ÇØ¼­ return
+// T(ìš”ì†Œ)ë¥¼ Aì— ëˆ„ì í•œ ë‹¤ìŒ, ê²°ê³¼ë¥¼ Rë¡œ ë³€í™˜í•´ì„œ return
 class ConcatCollector implements Collector<String, StringBuilder, String> {
-	
-	// ÀÛ¾÷ °á°ú¸¦ ÀúÀåÇÒ °ø°£À» Á¦°ø
+
+	// ì‘ì—… ê²°ê³¼ë¥¼ ì €ì¥í•  ê³µê°„ì„ ì œê³µ
 	@Override
 	public Supplier<StringBuilder> supplier() {
 		return () -> new StringBuilder();
-		//return StringBuilder::new;		
+		//return StringBuilder::new;
 	}
-	
-	// ½ºÆ®¸² ¿ä¼Ò¸¦ ¼öÁıÇÒ ¹æ¹ıÀ» Á¦°ø
+
+	// ìŠ¤íŠ¸ë¦¼ ìš”ì†Œë¥¼ ìˆ˜ì§‘í•  ë°©ë²•ì„ ì œê³µ
 	@Override
 	public BiConsumer<StringBuilder, String> accumulator() {
 		return (sb, s) -> sb.append(s);
 		//return StringBuilder::append;
-	}	
+	}
 
-	// µÎ ÀúÀå °ø°£À» º´ÇÕÇÒ ¹æ¹ıÀ» Á¦°ø(º´·Ä ½ºÆ®¸²)
+	// ë‘ ì €ì¥ ê³µê°„ì„ ë³‘í•©í•  ë°©ë²•ì„ ì œê³µ(ë³‘ë ¬ ìŠ¤íŠ¸ë¦¼)
 	@Override
 	public BinaryOperator<StringBuilder> combiner() {
 		return (sb, sb2) -> sb.append(sb2);
 		// return StringBuilder::append;
 	}
-	
-	// °á°ú¸¦ ÃÖÁ¾ÀûÀ¸·Î º¯È¯ÇÒ ¹æ¹ıÀ» Á¦°ø
+
+	// ê²°ê³¼ë¥¼ ìµœì¢…ì ìœ¼ë¡œ ë³€í™˜í•  ë°©ë²•ì„ ì œê³µ
 	@Override
 	public Function<StringBuilder, String> finisher() {
 		return sb -> sb.toString();
