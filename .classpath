@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="chap08_innerclass"/>
+	<classpathentry kind="src" path="ch12"/>
+	<classpathentry kind="src" path="chap14_lambda"/>
+	<classpathentry kind="src" path="chap07_innerclass"/>
+	<classpathentry kind="src" path="chap08_exception"/>
 	<classpathentry kind="src" path="chap13"/>
 	<classpathentry kind="src" path="chap15"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
